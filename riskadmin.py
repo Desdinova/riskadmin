@@ -13,18 +13,15 @@ def conn_shell(qstring):
   conn = mysql.connector.connect(user="root", database="asterisk")
   cursor = conn.cursor()
   cursor.execute(qstring)
-  for id in cursor:
-    print(id)
+  return cursor.fetchall()			# https://ianhowson.com/blog/a-quick-guide-to-using-mysql-in-python/
   cursor.close()
   conn.close()
   
-
 class Database():
-  def listall(argument):			# list the all entries in one table
+  def listall(argument):			# list all entries in one table
     listquery = ("SELECT * FROM " + argument)
-    print(listquery)
-    conn_shell(listquery)
-
+    data = (conn_shell(listquery))
+    print(data)
 
 def cli(argv):
   try:
@@ -38,15 +35,5 @@ def cli(argv):
     elif opt == "-l":
       Database.listall(arg)
 
-
 if __name__ == "__main__":              # https://stackoverflow.com/questions/419163/what-does-if-name-main-do
    cli(sys.argv[1:])
-
-
-# print("=======")
-
-# argv contains all arguments passed via command line
-# print(sys.argv)
-
-
-# TESTS
