@@ -20,7 +20,7 @@ def conn_shell(qstring):
   
 
 class Database():
-  def listall(argument):
+  def listall(argument):			# list the all entries in one table
     listquery = ("SELECT * FROM " + argument)
     print(listquery)
     conn_shell(listquery)
@@ -49,3 +49,4 @@ if __name__ == "__main__":              # https://stackoverflow.com/questions/41
 # print(sys.argv)
 
 
+# TESTS
