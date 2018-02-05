@@ -21,7 +21,15 @@ class Database():
   def listall(argument):			# list all entries in one table
     listquery = ("SELECT * FROM " + argument)
     data = (conn_shell(listquery))
-    print(data)
+    print("ID \t\tName \t\tnum_intern \t\tnum_extern \t\tTyp \t\tPIN \t\tEmail \t\t\tXMPP")
+    for i in data:				# https://snakify.org/lessons/two_dimensional_lists_arrays/
+      for elem in i:
+        if elem == None or "":
+          elem = "LEER"
+          print(elem, end="\t\t\t")
+        else:
+          print(elem, end="\t\t")
+      print()
 
 def cli(argv):
   try:
